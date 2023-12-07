@@ -1,0 +1,16 @@
+protocol GestureReducerProtocol {
+    mutating func reduce(_ currentState: AppState,
+                         _ action: GestureType) -> AppState
+}
+
+struct GestureReducer: GestureReducerProtocol {
+    
+    private(set) var shapesTranslator: ShapesTranslatorProtocol
+    private(set) var elementsTransformer: ElementsTransformerProtocol
+    
+    mutating func reduce(_ currentState: AppState,
+                         _ action: GestureType) -> AppState {
+        
+        var newState = currentState
+        
+        switch action {
